@@ -126,6 +126,21 @@ a:hover { color: var(--gt-leaf); }
   border-radius: var(--radius-sm);
 }
 
+/* Visually-hidden but available to screen readers.
+   Use for labels, headings, or hint text that's redundant
+   visually but provides essential context for assistive tech. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* -----------------------------------------------------------
    4. Navbar (Bootstrap overrides)
    ----------------------------------------------------------- */
@@ -669,4 +684,242 @@ footer address { font-style: normal; }
     left: 8px;
     right: auto;
   }
+}
+
+/* -----------------------------------------------------------
+   16. Products page — filter bar + grid + cards
+   ----------------------------------------------------------- */
+.products-section {
+  padding: var(--space-lg) 0 var(--space-xl);
+  background-color: var(--gt-cream);
+}
+
+/* Filter / search controls */
+.filter-bar {
+  background: var(--gt-paper);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gt-line);
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-soft);
+}
+
+.filter-bar-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.filter-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gt-stone);
+  margin-right: 0.5rem;
+}
+
+.filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 0.5rem 1.125rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--gt-line);
+  background: var(--gt-cream);
+  color: var(--gt-charcoal);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.filter-btn:hover { border-color: var(--gt-sage); color: var(--gt-forest); }
+.filter-btn.active {
+  background: var(--gt-forest);
+  color: var(--gt-cream);
+  border-color: var(--gt-forest);
+}
+
+/* Search field */
+.search-group {
+  position: relative;
+  flex-grow: 1;
+  max-width: 320px;
+  min-width: 220px;
+}
+
+.search-input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  padding: 0.625rem 1rem 0.625rem 2.5rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--gt-line);
+  background: var(--gt-cream);
+  color: var(--gt-charcoal);
+  transition: all var(--transition);
+}
+.search-input::placeholder { color: var(--gt-stone); }
+.search-input:focus {
+  outline: 3px solid var(--gt-clay);
+  outline-offset: 2px;
+  border-color: var(--gt-sage);
+  background: var(--gt-paper);
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.95rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--gt-stone);
+  font-size: 1rem;
+}
+
+/* Results count */
+.results-count {
+  margin-bottom: 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--gt-stone);
+}
+.results-count strong { color: var(--gt-forest); font-weight: 600; }
+
+/* Product grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: var(--gt-paper);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gt-line);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition);
+}
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--gt-sage);
+}
+
+.product-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.product-icon--hardware { background: var(--gt-sand); color: var(--gt-bark); }
+.product-icon--software { background: rgba(45, 122, 63, 0.12); color: var(--gt-forest); }
+.product-icon--services { background: rgba(193, 152, 117, 0.2); color: var(--gt-bark); }
+
+.product-card h3 {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.product-card .product-desc {
+  color: var(--gt-stone);
+  font-size: 0.9375rem;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+}
+
+.badge--hardware { background: var(--gt-sand); color: var(--gt-bark); }
+.badge--software { background: rgba(45, 122, 63, 0.15); color: var(--gt-forest); }
+.badge--services { background: rgba(193, 152, 117, 0.25); color: var(--gt-bark); }
+
+.product-card .btn-card {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--gt-forest);
+  background: transparent;
+  color: var(--gt-forest);
+  text-decoration: none;
+  text-align: center;
+  align-self: flex-start;
+  transition: all var(--transition);
+}
+.product-card .btn-card:hover {
+  background: var(--gt-forest);
+  color: var(--gt-cream);
+}
+
+/* Empty state when filter+search return nothing */
+.empty-state {
+  display: none;
+  padding: var(--space-md);
+  background: var(--gt-paper);
+  border: 1px dashed var(--gt-line);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+.empty-state.visible { display: block; }
+.empty-state h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.empty-state p { color: var(--gt-stone); margin-bottom: 1rem; }
+.empty-state .btn-reset {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--gt-forest);
+  background: transparent;
+  color: var(--gt-forest);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.empty-state .btn-reset:hover {
+  background: var(--gt-forest);
+  color: var(--gt-cream);
+}
+
+/* Hidden products (used by JS filter) */
+.product-card[hidden] { display: none; }
+
+@media (max-width: 600px) {
+  .filter-bar-row { flex-direction: column; align-items: stretch; }
+  .search-group { max-width: 100%; }
+  .filter-group { justify-content: flex-start; }
 }
