@@ -1,0 +1,672 @@
+/* ============================================================
+   GreenTech Solutions — Main Stylesheet
+   ICT-280 Final Project | Lisvaldo Liz
+   ============================================================ */
+
+/* -----------------------------------------------------------
+   1. Design Tokens (CSS Custom Properties)
+   ----------------------------------------------------------- */
+:root {
+  /* Greens — eco identity */
+  --gt-forest: #1f4d2d;     /* deepest, trust + authority */
+  --gt-leaf:   #2d7a3f;     /* primary action */
+  --gt-moss:   #4a6741;     /* secondary green */
+  --gt-sage:   #87a96b;     /* soft accent */
+
+  /* Earth tones */
+  --gt-clay:   #c19875;     /* warm accent */
+  --gt-sand:   #e8dcc4;     /* soft surface */
+  --gt-bark:   #5c4a3a;     /* deep warm */
+
+  /* Neutrals */
+  --gt-cream:    #f8f5ed;   /* page background — warmer than white */
+  --gt-paper:    #ffffff;   /* card surface */
+  --gt-charcoal: #1a1f1a;   /* primary text */
+  --gt-stone:    #6b7068;   /* secondary text */
+  --gt-line:     #e0dccf;   /* dividers */
+
+  /* Typography */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:    'Manrope', system-ui, -apple-system, sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+
+  /* Other */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --shadow-soft: 0 4px 24px rgba(31, 77, 45, 0.08);
+  --shadow-lift: 0 12px 40px rgba(31, 77, 45, 0.12);
+  --transition: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* -----------------------------------------------------------
+   2. Base / Reset
+   ----------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.0625rem;     /* 17px — slightly larger for readability */
+  line-height: 1.65;
+  color: var(--gt-charcoal);
+  background-color: var(--gt-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--gt-forest);
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 400; }
+h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+h3 { font-size: 1.375rem; font-weight: 600; }
+h4 { font-size: 1.125rem; font-weight: 600; }
+
+/* Use the optical-size axis of Fraunces for large display headings */
+h1, .display-heading {
+  font-variation-settings: "opsz" 120, "SOFT" 50;
+}
+
+em {
+  font-style: italic;
+  color: var(--gt-leaf);
+}
+
+p { margin-bottom: 1rem; }
+
+a {
+  color: var(--gt-forest);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+a:hover { color: var(--gt-leaf); }
+
+/* -----------------------------------------------------------
+   3. Accessibility helpers
+   ----------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--gt-forest);
+  color: var(--gt-cream);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 var(--radius-sm) 0;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 9999;
+}
+.skip-link:focus {
+  left: 0;
+  outline: 3px solid var(--gt-clay);
+  outline-offset: 2px;
+}
+
+/* Visible focus ring everywhere — critical for keyboard users */
+:focus-visible {
+  outline: 3px solid var(--gt-clay);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* -----------------------------------------------------------
+   4. Navbar (Bootstrap overrides)
+   ----------------------------------------------------------- */
+.navbar {
+  background-color: var(--gt-cream);
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--gt-line);
+}
+
+.navbar-brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gt-forest) !important;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.brand-mark {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  background: radial-gradient(circle at 30% 30%, var(--gt-sage), var(--gt-forest));
+  border-radius: 50%;
+  position: relative;
+}
+
+.navbar-nav .nav-link {
+  color: var(--gt-charcoal);
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  text-decoration: none;
+  position: relative;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus { color: var(--gt-leaf); }
+
+.navbar-nav .nav-link.active {
+  color: var(--gt-forest);
+  font-weight: 600;
+}
+
+.navbar-nav .nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 1rem; right: 1rem; bottom: 0.25rem;
+  height: 2px;
+  background: var(--gt-leaf);
+  border-radius: 2px;
+}
+
+/* -----------------------------------------------------------
+   5. Buttons
+   ----------------------------------------------------------- */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: all var(--transition);
+  letter-spacing: 0.01em;
+}
+
+.btn-primary {
+  background-color: var(--gt-forest);
+  color: var(--gt-cream);
+  border-color: var(--gt-forest);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--gt-leaf);
+  border-color: var(--gt-leaf);
+  color: var(--gt-cream);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--gt-forest);
+  border-color: var(--gt-forest);
+}
+.btn-outline:hover,
+.btn-outline:focus {
+  background-color: var(--gt-forest);
+  color: var(--gt-cream);
+}
+
+/* -----------------------------------------------------------
+   6. Hero
+   ----------------------------------------------------------- */
+.hero {
+  padding: var(--space-xl) 0 var(--space-lg);
+  background:
+    radial-gradient(ellipse at top right, rgba(135, 169, 107, 0.15), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(193, 152, 117, 0.12), transparent 55%),
+    var(--gt-cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gt-moss);
+  margin-bottom: 1rem;
+}
+
+.hero h1 { max-width: 18ch; margin-bottom: 1.5rem; }
+
+.hero .lead {
+  font-size: 1.25rem;
+  max-width: 60ch;
+  color: var(--gt-stone);
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* -----------------------------------------------------------
+   7. Feature cards
+   ----------------------------------------------------------- */
+.features {
+  padding: var(--space-xl) 0;
+  background-color: var(--gt-paper);
+}
+
+.features h2 {
+  margin-bottom: var(--space-lg);
+  max-width: 20ch;
+}
+
+.feature-card {
+  padding: 2rem;
+  background-color: var(--gt-cream);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gt-line);
+  transition: all var(--transition);
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--gt-sage);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+  background-color: var(--gt-sand);
+  border-radius: var(--radius-md);
+}
+
+.feature-card h3 { margin-bottom: 0.75rem; }
+.feature-card p { color: var(--gt-stone); margin-bottom: 0; }
+
+/* -----------------------------------------------------------
+   8. Mission
+   ----------------------------------------------------------- */
+.mission {
+  padding: var(--space-xl) 0;
+  background-color: var(--gt-cream);
+}
+
+.mission h2 { margin-bottom: 1.5rem; max-width: 16ch; }
+
+.mission p {
+  font-size: 1.25rem;
+  max-width: 60ch;
+  color: var(--gt-charcoal);
+  margin-bottom: 2rem;
+}
+
+.link-arrow {
+  font-weight: 600;
+  font-size: 1.0625rem;
+  text-decoration: none;
+  color: var(--gt-forest);
+  border-bottom: 2px solid var(--gt-leaf);
+  padding-bottom: 2px;
+  transition: all var(--transition);
+}
+.link-arrow:hover {
+  color: var(--gt-leaf);
+  padding-left: 4px;
+}
+
+/* -----------------------------------------------------------
+   9. CTA band
+   ----------------------------------------------------------- */
+.cta-band {
+  padding: var(--space-lg) 0;
+  background-color: var(--gt-forest);
+  color: var(--gt-cream);
+  text-align: center;
+}
+
+.cta-band h2 { color: var(--gt-cream); margin-bottom: 1rem; }
+
+.cta-band p {
+  font-size: 1.125rem;
+  max-width: 50ch;
+  margin: 0 auto 2rem;
+  color: var(--gt-sand);
+}
+
+.cta-band .btn-primary {
+  background-color: var(--gt-cream);
+  color: var(--gt-forest);
+  border-color: var(--gt-cream);
+}
+.cta-band .btn-primary:hover {
+  background-color: var(--gt-sand);
+  border-color: var(--gt-sand);
+  color: var(--gt-forest);
+}
+
+/* -----------------------------------------------------------
+   10. Footer
+   ----------------------------------------------------------- */
+footer {
+  background-color: var(--gt-charcoal);
+  color: var(--gt-sand);
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+footer h4 {
+  color: var(--gt-cream);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 1rem;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gt-cream);
+  margin-bottom: 0.5rem;
+}
+
+.footer-links { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 0.5rem; }
+
+footer a {
+  color: var(--gt-sand);
+  text-decoration: none;
+}
+footer a:hover { color: var(--gt-cream); }
+
+footer address { font-style: normal; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(232, 220, 196, 0.15);
+  padding-top: 1.5rem;
+  margin-top: 3rem;
+  font-size: 0.875rem;
+  color: var(--gt-stone);
+}
+
+/* -----------------------------------------------------------
+   11. Responsive adjustments
+   ----------------------------------------------------------- */
+@media (max-width: 768px) {
+  .hero { padding: var(--space-lg) 0 var(--space-md); }
+  .hero .lead { font-size: 1.0625rem; }
+  .features, .mission { padding: var(--space-lg) 0; }
+  .cta-band { padding: var(--space-md) 0; }
+  footer { padding: var(--space-md) 0 var(--space-sm); }
+  footer .row > div { margin-bottom: 2rem; }
+  .navbar-collapse { padding-top: 1rem; }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* -----------------------------------------------------------
+   12. Page hero (interior pages)
+   ----------------------------------------------------------- */
+.page-hero {
+  padding: var(--space-lg) 0 var(--space-md);
+  background:
+    radial-gradient(ellipse at top right, rgba(135, 169, 107, 0.15), transparent 60%),
+    var(--gt-cream);
+  border-bottom: 1px solid var(--gt-line);
+}
+
+.page-hero .eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gt-moss);
+  margin-bottom: 1rem;
+}
+
+.page-hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+  max-width: 18ch;
+}
+
+.page-hero .lead {
+  font-size: 1.125rem;
+  max-width: 55ch;
+  color: var(--gt-stone);
+  margin-bottom: 0;
+}
+
+/* -----------------------------------------------------------
+   13. Story / narrative section
+   ----------------------------------------------------------- */
+.story {
+  padding: var(--space-xl) 0;
+  background-color: var(--gt-paper);
+}
+
+.story h2 { margin-bottom: 1.5rem; max-width: 20ch; }
+
+.story p {
+  font-size: 1.125rem;
+  max-width: 60ch;
+  color: var(--gt-charcoal);
+}
+
+.story .lead-paragraph {
+  font-size: 1.375rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--gt-forest);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+/* -----------------------------------------------------------
+   14. Team
+   ----------------------------------------------------------- */
+.team {
+  padding: var(--space-xl) 0;
+  background-color: var(--gt-cream);
+}
+
+.team h2 { margin-bottom: 0.75rem; max-width: 20ch; }
+.team .section-intro {
+  color: var(--gt-stone);
+  margin-bottom: var(--space-md);
+  max-width: 55ch;
+}
+
+.team-card {
+  padding: 2rem;
+  background-color: var(--gt-paper);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gt-line);
+  height: 100%;
+  transition: all var(--transition);
+}
+.team-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--gt-sage);
+}
+
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.avatar--forest { background-color: var(--gt-forest); color: var(--gt-cream); }
+.avatar--leaf   { background-color: var(--gt-leaf);   color: var(--gt-cream); }
+.avatar--clay   { background-color: var(--gt-clay);   color: var(--gt-bark);  }
+.avatar--sage   { background-color: var(--gt-sage);   color: var(--gt-forest);}
+
+.team-card h3 { margin-bottom: 0.25rem; font-size: 1.25rem; }
+
+.team-card .role {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gt-moss);
+  margin-bottom: 1rem;
+}
+
+.team-card p { color: var(--gt-stone); margin-bottom: 0; font-size: 0.9375rem; }
+
+/* -----------------------------------------------------------
+   15. Timeline (vertical, alternating)
+   ----------------------------------------------------------- */
+.timeline-section {
+  padding: var(--space-xl) 0;
+  background-color: var(--gt-paper);
+}
+
+.timeline-section h2 {
+  margin-bottom: 0.75rem;
+  text-align: center;
+  max-width: none;
+}
+
+.timeline-section .section-intro {
+  color: var(--gt-stone);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  max-width: 55ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.timeline {
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1rem 0;
+  list-style: none;
+}
+
+/* Center line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--gt-sage) 5%, var(--gt-sage) 95%, transparent);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 1rem 2.5rem 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.timeline-item:nth-child(even) {
+  margin-left: 50%;
+  padding: 1rem 0 1rem 2.5rem;
+}
+
+/* Dot on the line */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 2rem;
+  width: 18px;
+  height: 18px;
+  background: var(--gt-leaf);
+  border: 3px solid var(--gt-cream);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--gt-leaf);
+  z-index: 1;
+}
+
+.timeline-item:nth-child(odd)::before  { right: -9px; }
+.timeline-item:nth-child(even)::before { left: -9px; }
+
+.timeline-content {
+  background: var(--gt-cream);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gt-line);
+  transition: all var(--transition);
+}
+.timeline-content:hover {
+  border-color: var(--gt-sage);
+  box-shadow: var(--shadow-soft);
+}
+
+.timeline-year {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gt-leaf);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content h3 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+  font-size: 0.9375rem;
+  color: var(--gt-stone);
+  margin-bottom: 0;
+}
+
+/* Mobile: timeline collapses to single left-aligned column */
+@media (max-width: 768px) {
+  .timeline::before { left: 1rem; }
+
+  .timeline-item,
+  .timeline-item:nth-child(even) {
+    width: 100%;
+    margin-left: 0;
+    padding: 0.5rem 0 0.5rem 2.75rem;
+  }
+
+  .timeline-item::before,
+  .timeline-item:nth-child(odd)::before,
+  .timeline-item:nth-child(even)::before {
+    left: 8px;
+    right: auto;
+  }
+}

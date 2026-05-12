@@ -1,0 +1,23 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (in case Bootstrap ever gets pulled locally)
+node_modules/
+package-lock.json
+
+# Logs / build artifacts
+*.log
+dist/
+build/
+
+# Environment
+.env
+.env.local
