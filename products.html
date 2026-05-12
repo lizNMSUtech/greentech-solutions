@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore GreenTech Solutions' full lineup of energy-efficient hardware, sustainability software, and consulting services for small and mid-sized businesses.">
+  <title>Products &amp; Services — GreenTech Solutions</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <nav class="navbar navbar-expand-lg" aria-label="Primary navigation">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"></span>GreenTech
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false"
+                aria-label="Toggle navigation menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">Resources</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============== PAGE HERO ============== -->
+    <section class="page-hero" aria-labelledby="page-hero-heading">
+      <div class="container">
+        <p class="eyebrow">Products &amp; Services</p>
+        <h1 id="page-hero-heading">Tools for measurable impact.</h1>
+        <p class="lead">Hardware, software, and consulting services designed for teams that want sustainability to show up on the balance sheet, not just the mission statement.</p>
+      </div>
+    </section>
+
+    <!-- ============== PRODUCTS / FILTER ============== -->
+    <section class="products-section" aria-labelledby="products-heading">
+      <div class="container">
+        <h2 id="products-heading" class="visually-hidden">Product catalog</h2>
+
+        <!-- Filter + search controls -->
+        <div class="filter-bar" role="region" aria-label="Filter and search products">
+          <div class="filter-bar-row">
+
+            <div class="filter-group" role="group" aria-label="Filter by category">
+              <span class="filter-label" id="filter-label">Filter:</span>
+              <button type="button" class="filter-btn active" data-category="all"
+                      aria-pressed="true" aria-describedby="filter-label">All</button>
+              <button type="button" class="filter-btn" data-category="hardware"
+                      aria-pressed="false" aria-describedby="filter-label">Hardware</button>
+              <button type="button" class="filter-btn" data-category="software"
+                      aria-pressed="false" aria-describedby="filter-label">Software</button>
+              <button type="button" class="filter-btn" data-category="services"
+                      aria-pressed="false" aria-describedby="filter-label">Services</button>
+            </div>
+
+            <div class="search-group">
+              <label for="product-search" class="visually-hidden">Search products</label>
+              <span class="search-icon" aria-hidden="true">🔍</span>
+              <input type="search" id="product-search" class="search-input"
+                     placeholder="Search products…"
+                     aria-describedby="search-hint">
+              <span id="search-hint" class="visually-hidden">Type to filter products by name or description.</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Results count, announced to screen readers when it changes -->
+        <p class="results-count" id="results-count" aria-live="polite" aria-atomic="true">
+          Showing <strong><span id="visible-count">8</span></strong> of <strong><span id="total-count">8</span></strong> products
+        </p>
+
+        <!-- Product grid: data-category powers filtering, data-search-text powers search -->
+        <div class="product-grid" id="product-grid">
+
+          <!-- HARDWARE x3 -->
+          <article class="product-card"
+                   data-category="hardware"
+                   data-search-text="ecosense pro energy monitor electricity power smart meter">
+            <div class="product-icon product-icon--hardware" aria-hidden="true">⚡</div>
+            <h3>EcoSense Pro Energy Monitor</h3>
+            <p class="product-desc">Plug-in monitor that tracks circuit-level energy use in real time and surfaces idle-draw culprits in your facility.</p>
+            <div class="product-meta">
+              <span class="badge badge--hardware">Hardware</span>
+              <span class="badge badge--hardware">Plug &amp; play</span>
+            </div>
+            <a href="contact.html?product=EcoSense+Pro" class="btn-card">Request quote</a>
+          </article>
+
+          <article class="product-card"
+                   data-category="hardware"
+                   data-search-text="smartsort recycling bin iot waste sensor weight">
+            <div class="product-icon product-icon--hardware" aria-hidden="true">♻</div>
+            <h3>SmartSort Recycling Station</h3>
+            <p class="product-desc">IoT-connected sort bin with built-in weight sensors and a touchscreen guide. Tracks diversion rates contamination automatically.</p>
+            <div class="product-meta">
+              <span class="badge badge--hardware">Hardware</span>
+              <span class="badge badge--hardware">IoT</span>
+            </div>
+            <a href="contact.html?product=SmartSort" class="btn-card">Request quote</a>
+          </article>
+
+          <article class="product-card"
+                   data-category="hardware"
+                   data-search-text="solarsync controller pv solar inverter battery storage">
+            <div class="product-icon product-icon--hardware" aria-hidden="true">☀</div>
+            <h3>SolarSync Controller</h3>
+            <p class="product-desc">Drop-in controller that pairs with existing PV systems to optimize battery dispatch and grid sell-back timing.</p>
+            <div class="product-meta">
+              <span class="badge badge--hardware">Hardware</span>
+              <span class="badge badge--hardware">Solar</span>
+            </div>
+            <a href="contact.html?product=SolarSync" class="btn-card">Request quote</a>
+          </article>
+
+          <!-- SOFTWARE x3 -->
+          <article class="product-card"
+                   data-category="software"
+                   data-search-text="carbonledger emissions tracking ghg scope 1 2 3 reporting saas">
+            <div class="product-icon product-icon--software" aria-hidden="true">📊</div>
+            <h3>CarbonLedger Platform</h3>
+            <p class="product-desc">Cloud SaaS that consolidates emissions across Scope 1, 2, and 3 and generates audit-ready GHG protocol reports on demand.</p>
+            <div class="product-meta">
+              <span class="badge badge--software">Software</span>
+              <span class="badge badge--software">SaaS</span>
+            </div>
+            <a href="contact.html?product=CarbonLedger" class="btn-card">Request quote</a>
+          </article>
+
+          <article class="product-card"
+                   data-category="software"
+                   data-search-text="fleetwise routing logistics ev electric vehicle fuel efficient delivery">
+            <div class="product-icon product-icon--software" aria-hidden="true">🚚</div>
+            <h3>FleetWise Route Optimizer</h3>
+            <p class="product-desc">Route-planning software that cuts miles driven by up to 22% while accounting for EV charging stops and load balancing.</p>
+            <div class="product-meta">
+              <span class="badge badge--software">Software</span>
+              <span class="badge badge--software">Logistics</span>
+            </div>
+            <a href="contact.html?product=FleetWise" class="btn-card">Request quote</a>
+          </article>
+
+          <article class="product-card"
+                   data-category="software"
+                   data-search-text="greendesk dashboard analytics esg metrics kpi reporting">
+            <div class="product-icon product-icon--software" aria-hidden="true">📈</div>
+            <h3>GreenDesk Analytics</h3>
+            <p class="product-desc">Executive dashboard that pulls every sustainability KPI into one view. Built for the CFO who wants ESG metrics next to the P&amp;L.</p>
+            <div class="product-meta">
+              <span class="badge badge--software">Software</span>
+              <span class="badge badge--software">Dashboard</span>
+            </div>
+            <a href="contact.html?product=GreenDesk" class="btn-card">Request quote</a>
+          </article>
+
+          <!-- SERVICES x2 -->
+          <article class="product-card"
+                   data-category="services"
+                   data-search-text="audit sustainability assessment energy consulting walkthrough recommendations">
+            <div class="product-icon product-icon--services" aria-hidden="true">🔍</div>
+            <h3>Sustainability Audit</h3>
+            <p class="product-desc">A two-week on-site engagement: we walk your facility, audit energy and waste streams, and deliver a prioritized action plan with ROI estimates.</p>
+            <div class="product-meta">
+              <span class="badge badge--services">Service</span>
+              <span class="badge badge--services">Consulting</span>
+            </div>
+            <a href="contact.html?product=Sustainability+Audit" class="btn-card">Request quote</a>
+          </article>
+
+          <article class="product-card"
+                   data-category="services"
+                   data-search-text="bcorp certification support sustainability standards consulting reporting">
+            <div class="product-icon product-icon--services" aria-hidden="true">🏆</div>
+            <h3>B Corp Certification Support</h3>
+            <p class="product-desc">End-to-end guidance through the B Corp impact assessment. We handle documentation, scoring, and revisions until certification.</p>
+            <div class="product-meta">
+              <span class="badge badge--services">Service</span>
+              <span class="badge badge--services">Certification</span>
+            </div>
+            <a href="contact.html?product=BCorp+Support" class="btn-card">Request quote</a>
+          </article>
+
+        </div>
+
+        <!-- Empty state -->
+        <div class="empty-state" id="empty-state" role="status" aria-live="polite">
+          <h3>No products match your search.</h3>
+          <p>Try a different keyword or clear your filters to see everything.</p>
+          <button type="button" class="btn-reset" id="reset-filters">Reset filters</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============== CTA BAND ============== -->
+    <section class="cta-band" aria-labelledby="cta-heading">
+      <div class="container">
+        <h2 id="cta-heading">Not sure where to start?</h2>
+        <p>Our team can put together a tailored recommendation in under a week.</p>
+        <a href="contact.html" class="btn btn-primary">Talk with us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <p class="footer-brand">GreenTech Solutions</p>
+          <p>Sustainability, engineered for the long haul.</p>
+        </div>
+        <div class="col-md-4">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="blog.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Contact</h4>
+          <address>
+            1450 Sustainability Way<br>
+            Albuquerque, NM 87102<br>
+            <a href="mailto:hello@greentech.example">hello@greentech.example</a><br>
+            <a href="tel:+15055550100">(505) 555-0100</a>
+          </address>
+        </div>
+      </div>
+      <p class="footer-bottom">
+        &copy; <time datetime="2026">2026</time> GreenTech Solutions.
+        Built as a course project for ICT-280.
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>
