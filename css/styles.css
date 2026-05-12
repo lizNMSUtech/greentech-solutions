@@ -384,7 +384,7 @@ footer {
   padding: var(--space-lg) 0 var(--space-md);
 }
 
-footer h4 {
+footer h3 {
   color: var(--gt-cream);
   font-size: 0.875rem;
   font-weight: 600;
