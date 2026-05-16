@@ -2,7 +2,7 @@
 
 For my ICT-280 final at NMSU (Spring 2026), I built a responsive, accessible, multi-page site for a fictional eco-tech startup called GreenTech Solutions. The project covered product pages, forms, accessibility features, and basic JavaScript interactivity.
 
-**Live site:** "https://liznmsutech.github.io/greentech-solutions/"
+**Live site:** https://liznmsutech.github.io/greentech-solutions/
 
 ---
 
