@@ -1,110 +1,125 @@
-# GreenTech Solutions
+# GreenTech Solutions — Student Project (ICT‑280)
 
-A fully responsive, accessible, multi-page website built for the **GreenTech Solutions** client profile — the Module 15 Final Project for ICT-280, Introduction to Web Development, Spring 2026 at NMSU.
+For my ICT-280 final at NMSU (Spring 2026), I built a responsive, accessible, multi-page site for a fictional eco-tech startup called GreenTech Solutions. The project covered product pages, forms, accessibility features, and basic JavaScript interactivity.
 
-**Live site:** https://liznmsutech.github.io/greentech-solutions/
-
----
-
-## Project description
-
-GreenTech Solutions is a fictional eco-tech startup that helps small and mid-sized businesses reduce their carbon footprint through energy-efficient hardware, smart recycling systems, and carbon tracking software. This website introduces the company, presents its product lineup with interactive filtering, provides educational sustainability resources, and allows visitors to contact the team — all while meeting WCAG accessibility standards and working seamlessly across devices.
+**Live site:** 'https://liznmsutech.github.io/greentech-solutions/'
 
 ---
 
-## Live site
+## Project overview
 
-**https://liznmsutech.github.io/greentech-solutions/**
+GreenTech Solutions is a made‑up company that helps small and mid‑sized businesses reduce their carbon footprint. Building this site gave me a chance to combine everything we learned this semester — semantic HTML, CSS layout systems, responsive design, accessibility, and vanilla JavaScript.
+
+The site includes:
+
+- A homepage with a hero section and company overview  
+- An About page with a timeline and team section  
+- A Products page with interactive filtering and live search  
+- A Resources/Blog page  
+- A Contact page with custom form validation  
+
+This was my first time building a multi‑page site from scratch, so I focused a lot on keeping the code organized and making sure everything worked well on mobile.
+
+---
+
+## Pages
 
 | Page | URL |
-|---|---|
+|------|------|
 | Homepage | `/` |
 | About | `/about.html` |
-| Products & Services | `/products.html` |
+| Products | `/products.html` |
 | Resources / Blog | `/blog.html` |
 | Contact | `/contact.html` |
 
 ---
 
-## Features
+## What I built and what I learned
 
 ### HTML5
-- Semantic landmark elements throughout: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`
-- Additional semantic elements: `<address>`, `<time>`, `<ol>`, headings hierarchy (h1–h3)
-- `aria-*` attributes for interactive components (filter buttons, live regions, form fields)
-- Skip-to-content link on every page for keyboard users
-- `novalidate` on forms with custom JS validation so error messages stay under developer control
+I tried to use semantic elements correctly — things like `<header>`, `<main>`, `<section>`, and `<article>`. I also added accessibility features such as:
+
+- Skip‑to‑content links  
+- `aria-*` attributes for the product filters and form errors  
+- Proper labels and alt text  
+
+This was good practice in writing HTML that isn’t just “div soup.”
 
 ### CSS3
-- Single external stylesheet (`css/styles.css`) shared across all pages
-- CSS custom properties (design tokens) for the full color palette, typography, spacing scale, and shadows — change one variable, the whole site updates
-- Flexbox and CSS Grid for layout (product grid, contact two-column, newsletter card, timeline)
-- `clamp()` for fluid type scaling without breakpoint jumps
-- `prefers-reduced-motion` media query respects user accessibility preferences
-- Bootstrap 5.3.3 grid and navbar loaded via CDN; all visual design is custom
+All pages share one stylesheet (`css/styles.css`). I experimented with:
+
+- CSS custom properties for colors, spacing, and typography  
+- Flexbox and Grid for layout  
+- `clamp()` for fluid type  
+- A reduced‑motion mode using `prefers-reduced-motion`  
+
+I used Bootstrap only for the grid and navbar, but the visual design is my own.
 
 ### JavaScript
-- **Products filter + live search** (`js/products.js`): category filter buttons and a real-time search input work together (AND logic) to show/hide product cards dynamically; results count updates with `aria-live="polite"` so screen readers announce changes; empty state with reset button appears when no products match
-- **Contact form validation** (`js/contact.js`): real-time inline validation on all four required fields (name, email, subject, message) with specific error messages; errors clear as the user corrects them; focus jumps to the first invalid field on submit; success state replaces the form after submission
-- **Newsletter validation**: email format validated before the subscribe button responds
-- **Site-wide nav** (`js/main.js`): auto-highlights the current page link based on URL; collapses mobile menu after link click
-- All JS is vanilla ES6, no frameworks, wrapped in IIFEs
+This was the biggest learning section for me. I wrote three small scripts:
 
-### Mobile responsiveness
-- Fully responsive from 320px to 1920px+
-- Tested at iPhone 14 Pro Max (430px), Samsung Galaxy S20 Ultra (412px), and iPad Air (820px)
-- Lighthouse mobile scores: **97 Performance / 95–96 Accessibility / 100 Best Practices / 100 SEO** across all pages
-- Bootstrap navbar collapses to hamburger at `lg` breakpoint
-- Product grid uses `auto-fill` with `minmax(280px, 1fr)` — adapts from 1 to 4 columns
-- Timeline collapses from alternating two-column to single left-aligned column on mobile
-- Contact form switches from two-column to single-column below 900px
+- **Product filtering + live search**  
+  The filters and search box work together to show/hide product cards. I also added an empty‑state message and an `aria-live` region so screen readers announce the result count.
 
-### Web accessibility (WCAG)
-- `lang="en"` on every page's `<html>` element
-- Skip-to-content link on every page (visible on keyboard focus)
-- All images and decorative icons use `alt` text or `aria-hidden="true"` appropriately
-- All form inputs have associated `<label>` elements or `aria-label`
-- Interactive elements (buttons, links, inputs) have visible focus indicators (`outline: 3px solid`)
-- Color contrast meets WCAG AA on all text/background combinations
-- Filter buttons use `aria-pressed` to communicate toggle state
-- Live search result count uses `aria-live="polite"` for screen reader announcements
-- Form error messages use `role="alert"` and are linked to their inputs via `aria-describedby`
-- Heading hierarchy is consistent across all pages (no skipped levels)
-- `prefers-reduced-motion` disables transitions and animations for users who prefer it
+- **Contact form validation**  
+  I wrote custom validation for name, email, subject, and message. Errors show in real time and clear as the user fixes them.
 
-### GitHub Pages
-Site is deployed from the `main` branch root at:
-**https://liznmsutech.github.io/greentech-solutions/**
+- **Navigation behavior**  
+  The current page link highlights automatically, and the mobile menu closes after clicking a link.
+
+All JS is vanilla ES6 wrapped in IIFEs — no frameworks.
+
+### Responsiveness
+I tested the layout at several breakpoints (iPhone 14 Pro Max, Samsung S20 Ultra, iPad Air). The product grid, timeline, and contact form all adapt to smaller screens.
+
+### Accessibility
+I followed WCAG guidelines as best as I could for a student project:
+
+- Proper heading hierarchy  
+- Visible focus outlines  
+- High color contrast  
+- `aria-pressed` for filter buttons  
+- `role="alert"` for form errors  
+
+### Lighthouse scores
+I was happy with the results — most pages scored around:
+
+- **97 Performance**  
+- **95–96 Accessibility**  
+- **100 Best Practices**  
+- **100 SEO**
 
 ---
 
-## How to run locally
+## Running the project locally
 
-No build step required. Clone or download and open `index.html` directly in any modern browser.
+No build tools needed — just open `index.html` in a browser.
 
 ```bash
 git clone https://github.com/lizNMSUtech/greentech-solutions.git
 cd greentech-solutions
+
 # macOS
 open index.html
+
 # Windows
 start index.html
 ```
 
-An internet connection is required for Bootstrap 5 and Google Fonts to load from their CDNs. The site is fully functional offline except for font rendering (system fallbacks apply).
+Bootstrap and Google Fonts load from CDNs, so the site works offline but with fallback fonts.
 
 ---
 
-## Technologies used
+## Tech stack
 
-| Technology | Version | Purpose |
-|---|---|---|
-| HTML5 | — | Semantic page structure |
-| CSS3 | — | Custom design system, layout, responsiveness |
-| JavaScript (ES6) | — | Filter/search, form validation, nav behavior |
-| Bootstrap | 5.3.3 | Responsive grid, navbar (CDN) |
-| Google Fonts | — | Fraunces (display) + Manrope (body) (CDN) |
-| GitHub Pages | — | Static site hosting |
+| Technology | Purpose |
+|-----------|----------|
+| HTML5 | Structure and semantics |
+| CSS3 | Layout, design system, responsiveness |
+| JavaScript (ES6) | Filtering, search, form validation, nav behavior |
+| Bootstrap 5.3.3 | Grid + navbar |
+| Google Fonts | Fraunces + Manrope |
+| GitHub Pages | Hosting |
 
 ---
 
@@ -112,36 +127,24 @@ An internet connection is required for Bootstrap 5 and Google Fonts to load from
 
 ```
 greentech-solutions/
-├── index.html          # Homepage — hero, features, mission, CTA
-├── about.html          # About — story, team (4 members), milestones timeline
-├── products.html       # Products — 8 cards with category filter + live search
-├── blog.html           # Resources — featured article + 6-article grid + topic browse
-├── contact.html        # Contact — validated form, company info, newsletter signup
+├── index.html
+├── about.html
+├── products.html
+├── blog.html
+├── contact.html
 ├── css/
-│   └── styles.css      # Full design system + all component styles
+│   └── styles.css
 ├── js/
-│   ├── main.js         # Site-wide: active nav link, mobile menu collapse
-│   ├── products.js     # Products page: filter + search + empty state
-│   └── contact.js      # Contact page: form validation + newsletter validation
-├── images/             # Image assets folder
-├── .gitignore
+│   ├── main.js
+│   ├── products.js
+│   └── contact.js
+├── images/
 └── README.md
 ```
 
 ---
 
-## Lighthouse scores (mobile, Incognito)
-
-| Page | Performance | Accessibility | Best Practices | SEO |
-|---|---|---|---|---|
-| Homepage | 97 | 95 | 100 | 100 |
-| Products | 97 | 96 | 100 | 100 |
-| Resources | 97 | 95 | 100 | 100 |
-
----
-
 ## Author
-
-**Lisvaldo Liz**
-ICT-280 — Introduction to Web Development, Spring 2026
+**Lisvaldo Liz**  
+ICT‑280 — Introduction to Web Development  
 New Mexico State University
